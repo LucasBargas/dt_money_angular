@@ -1,0 +1,49 @@
+@use '../../../styles/theme_dark' as dark;
+@use '../../../styles/theme_light' as light;
+
+.header {
+  height: 212px;
+  background: light.$color-secondary;
+  padding: 2.75rem 0;
+
+  &.active {
+    background: dark.$color-secondary;
+
+    .header-wrapper {
+      button {
+        background: dark.$color-primary;
+      }
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: light.$color-text;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    button {
+      display: inline-block;
+      width: auto;
+      padding: 0 1.25rem;
+      border-radius: .325rem;
+      background: #5E2EE5;
+      color: light.$color-text;
+      transition: filter .3s;
+
+      &:hover {
+        filter: brightness(.8); // escurece 10%
+      }
+    }
+  }
+}

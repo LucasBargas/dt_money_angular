@@ -1,1 +1,13 @@
-<header>header works!</header>
+<header class="header" [class.active]="theme() === 'dark'">
+  <app-container>
+    <div class="header-wrapper">
+      <a routerLink="/home">
+        <figure>
+          <img src="assets/images/logo.png" alt="DT Money - Logo" />
+        </figure>
+        <h1>DT Money</h1>
+      </a>
+      <button type="button">Nova transação</button>
+    </div>
+  </app-container>
+</header>

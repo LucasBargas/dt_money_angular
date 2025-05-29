@@ -11,7 +11,7 @@
   left: .75rem;
   transform: translateY(-50%);
   height: 4.6875rem;
-  width: 2.4375rem;
+  width: 2.125rem;
   padding: 0.25rem;
   border-radius: 50px;
   background: light.$color-surface;
@@ -34,18 +34,18 @@
     top: 0;
     transform: translateY(100%);
     border-radius: 100%;
-    background: dark.$color-surface;
-    height: 2.4375rem;
-    width: 2.4375rem;
+    background: light.$color-secondary;
+    height: 2.125rem;
+    width: 2.125rem;
     transition: transform .2s ease;
   }
 
   &.active {
-    background: dark.$color-surface;
+    background: dark.$color-secondary;
 
     .toggle-button-ball {
       transform: translateY(0%);
-      background: light.$color-surface;
+      background: light.$color-primary;
     }
   }
 }

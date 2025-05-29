@@ -6,6 +6,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  transition: .3s;
 }
 
 html {
@@ -20,7 +21,6 @@ html {
   body {
     background: light.$color-background;
     color: light.$color-text;
-    transition: .3s;
 
     &.dark {
       background: dark.$color-background;
@@ -61,9 +61,8 @@ html {
       border: none;
       outline: none;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: 500;
     }
 
     input, button {
