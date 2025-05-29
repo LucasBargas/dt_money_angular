@@ -1,0 +1,18 @@
+<!-- <div>
+  <input type="checkbox" class="checkbox" id="chk" />
+  <label class="label" for="chk">
+    <fa-icon class="fa-moon" [icon]="faMoon"></fa-icon>
+    <fa-icon class="fa-sun" [icon]="faSun"></fa-icon>
+    <div class="ball"></div>
+  </label>
+</div> -->
+
+<div
+  class="toggle-button"
+  [class.active]="theme() === 'dark'"
+  (click)="toggleTheme()"
+>
+  <div class="toggle-button-ball"></div>
+  <fa-icon class="fa-moon" [icon]="faMoon"></fa-icon>
+  <fa-icon class="fa-sun" [icon]="faSun"></fa-icon>
+</div>

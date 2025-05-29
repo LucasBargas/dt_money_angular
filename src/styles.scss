@@ -20,6 +20,7 @@ html {
   body {
     background: light.$color-background;
     color: light.$color-text;
+    transition: .3s;
 
     &.dark {
       background: dark.$color-background;

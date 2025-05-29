@@ -1,0 +1,51 @@
+@use '../../../styles/theme_dark' as dark;
+@use '../../../styles/theme_light' as light;
+
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 50%;
+  left: .75rem;
+  transform: translateY(-50%);
+  height: 4.6875rem;
+  width: 2.4375rem;
+  padding: 0.25rem;
+  border-radius: 50px;
+  background: light.$color-surface;
+  cursor: pointer;
+  z-index: 1000;
+  transition: .2s;
+  box-shadow: rgba(34, 34, 34, 0.37) -2px 1px 23px -1px;
+
+  fa-icon {
+    font-size: 1.5rem;
+    color: #FFD700;
+    transition: .2s;
+  }
+
+  .toggle-button-ball {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    transform: translateY(100%);
+    border-radius: 100%;
+    background: dark.$color-surface;
+    height: 2.4375rem;
+    width: 2.4375rem;
+    transition: transform .2s ease;
+  }
+
+  &.active {
+    background: dark.$color-surface;
+
+    .toggle-button-ball {
+      transform: translateY(0%);
+      background: light.$color-surface;
+    }
+  }
+}
