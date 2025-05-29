@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "outputPath": "dist/dtmoney_angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -98,5 +101,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a6aa543b-7376-4775-a523-02149da2196d"
   }
 }
