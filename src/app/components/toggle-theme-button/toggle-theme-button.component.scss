@@ -1,5 +1,5 @@
-@use '../../../styles/theme_dark' as dark;
-@use '../../../styles/theme_light' as light;
+@use 'theme_dark' as dark;
+@use 'theme_light' as light;
 
 .toggle-button {
   display: flex;
