@@ -5,6 +5,7 @@
   height: 212px;
   background: light.$color-secondary;
   padding: 2.75rem 0;
+  position: relative;
 
   &.active {
     background: dark.$color-secondary;

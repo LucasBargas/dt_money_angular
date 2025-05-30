@@ -12,7 +12,7 @@
   transform: translateY(-50%);
   height: 4.375rem;
   width: 2.125rem;
-  padding: 0.25rem;
+  padding: .375rem .25rem;
   border-radius: 50px;
   background: light.$color-surface;
   cursor: pointer;
@@ -21,8 +21,8 @@
   box-shadow: rgba(34, 34, 34, 0.37) -2px 1px 23px -1px;
 
   fa-icon {
-    font-size: 1.325rem;
-    color: #FFD700;
+    font-size: 1.125rem;
+    color: #B8860B;
     transition: .2s;
   }
 

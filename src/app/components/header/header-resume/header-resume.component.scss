@@ -1,0 +1,63 @@
+@use '../../../../styles/theme_dark' as dark;
+@use '../../../../styles/theme_light' as light;
+
+
+.header-resume-area {
+  position: absolute;
+  bottom: -4.75rem;
+  display: flex;
+  width: 100%;
+  max-width: 1120px;
+  gap: 2rem;
+
+  &.active {
+    h2, p, strong {
+      color: dark.$color-text;
+    }
+
+    .header-resume-area-single {
+      width: 100%;
+      background: dark.$color-surface;
+
+      &:last-of-type {
+        background: dark.$color-primary;
+      }
+    }
+  }
+
+  &-single {
+    width: 100%;
+    background: light.$color-surface;
+    padding: 2rem;
+    border-radius: 0.375rem;
+    box-shadow: rgba(34, 34, 34, 0.37) -2px 1px 23px -1px;
+
+    h2, p, strong {
+      color: dark.$color-surface;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+
+    strong {
+      font-size: 2rem;
+    }
+
+    &:last-of-type {
+      background: light.$color-secondary;
+
+      h2, p, strong {
+        color: light.$color-surface;
+      }
+    }
+  }
+}
