@@ -10,16 +10,15 @@ import { environment } from '../../environments/environment.prod';
 export class TransactionsService {
   private API_URL = `${environment.supabaseUrl}/rest/v1/transactions`;
   private API_KEY = environment.supabaseKey;
+  private readonly headers = new HttpHeaders({
+    'apikey': this.API_KEY,
+    'Authorization': `Bearer ${this.API_KEY}`,
+    'Content-Type': 'application/json',
+  });
 
   constructor(private http: HttpClient) {}
 
   getTransactions(): Observable<ITransactions[]> {
-    const headers = new HttpHeaders({
-      'apikey': this.API_KEY,
-      'Authorization': `Bearer ${this.API_KEY}`,
-      'Content-Type': 'application/json'
-    });
-
-    return this.http.get<ITransactions[]>(this.API_URL, { headers });
+    return this.http.get<ITransactions[]>(this.API_URL, { headers: this.headers });
   }
 }

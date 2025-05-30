@@ -7,7 +7,7 @@
           <img src="assets/images/arrow-green.png" alt="Arrow green">
         </figure>
       </div>
-      <strong>{{ formatToBRL(totalSales) }}</strong>
+      <strong>{{ totalSales() | brlCurrency }}</strong>
     </div>
 
     <div class="header-resume-area-single">
@@ -17,7 +17,7 @@
           <img src="assets/images/arrow-wine.png" alt="Arrow wine">
         </figure>
       </div>
-      <strong>{{ formatToBRL(totalExpenses) }}</strong>
+      <strong>{{ totalExpenses() | brlCurrency }}</strong>
     </div>
 
     <div class="header-resume-area-single">
@@ -27,7 +27,7 @@
           <img src="assets/images/dolar.png" alt="Dólar">
         </figure>
       </div>
-      <strong>{{ formatToBRL(totalSales - totalExpenses) }}</strong>
+      <strong>{{ (totalSales() - totalExpenses()) | brlCurrency }}</strong>
     </div>
   </div>
 
