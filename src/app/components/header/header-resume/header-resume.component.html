@@ -6,7 +6,7 @@
         <img src="assets/images/arrow-green.png" alt="">
       </figure>
     </div>
-    <strong>R$ 1.000,00</strong>
+    <strong>{{ totalSales | currency:'BRL':'symbol':'1.2-2' }}</strong>
   </div>
 
   <div class="header-resume-area-single">
@@ -16,7 +16,7 @@
         <img src="assets/images/arrow-wine.png" alt="">
       </figure>
     </div>
-    <strong>R$ 1.000,00</strong>
+    <strong>{{ totalExpenses | currency:'BRL':'symbol':'1.2-2' }}</strong>
   </div>
 
   <div class="header-resume-area-single">
@@ -26,6 +26,6 @@
         <img src="assets/images/dolar.png" alt="">
       </figure>
     </div>
-    <strong>R$ 1.000,00</strong>
+    <strong>{{ (totalSales - totalExpenses) | currency:'BRL':'symbol':'1.2-2' }}</strong>
   </div>
 </div>
