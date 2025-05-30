@@ -1,31 +1,38 @@
-<div class="header-resume-area" [class.active]="theme() === 'dark'">
-  <div class="header-resume-area-single">
-    <div>
-      <h2>Entradas</h2>
-      <figure>
-        <img src="assets/images/arrow-green.png" alt="">
-      </figure>
+<div class="header-resume" [class.active]="theme() === 'dark'">
+  <div class="header-resume-area">
+    <div class="header-resume-area-single">
+      <div>
+        <h2>Entradas</h2>
+        <figure>
+          <img src="assets/images/arrow-green.png" alt="">
+        </figure>
+      </div>
+      <strong>{{ formatToBRL(totalSales) }}</strong>
     </div>
-    <strong>{{ totalSales | currency:'BRL':'symbol':'1.2-2' }}</strong>
+
+    <div class="header-resume-area-single">
+      <div>
+        <h2>Saídas</h2>
+        <figure>
+          <img src="assets/images/arrow-wine.png" alt="">
+        </figure>
+      </div>
+      <strong>{{ formatToBRL(totalExpenses) }}</strong>
+    </div>
+
+    <div class="header-resume-area-single">
+      <div>
+        <h2>Total</h2>
+        <figure>
+          <img src="assets/images/dolar.png" alt="">
+        </figure>
+      </div>
+      <strong>{{ formatToBRL(totalSales - totalExpenses) }}</strong>
+    </div>
   </div>
 
-  <div class="header-resume-area-single">
-    <div>
-      <h2>Saídas</h2>
-      <figure>
-        <img src="assets/images/arrow-wine.png" alt="">
-      </figure>
-    </div>
-    <strong>{{ totalExpenses | currency:'BRL':'symbol':'1.2-2' }}</strong>
-  </div>
-
-  <div class="header-resume-area-single">
-    <div>
-      <h2>Total</h2>
-      <figure>
-        <img src="assets/images/dolar.png" alt="">
-      </figure>
-    </div>
-    <strong>{{ (totalSales - totalExpenses) | currency:'BRL':'symbol':'1.2-2' }}</strong>
-  </div>
+  <ul class="slider-controller">
+    <li><</li>
+    <li>></li>
+  </ul>
 </div>
