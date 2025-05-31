@@ -27,7 +27,7 @@ export class HeaderResumeComponent implements AfterViewInit {
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
   swiper!: Swiper;
-  private slidePerView = 2
+  slidePerView = 2
 
   constructor() {
     register();
