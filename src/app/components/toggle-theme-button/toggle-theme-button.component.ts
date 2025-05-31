@@ -12,13 +12,13 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './toggle-theme-button.component.scss'
 })
 export class ToggleThemeButtonComponent {
-  private themeService = inject(ThemeService);
-  theme = this.themeService.getTheme();
+  private _themeService = inject(ThemeService);
+  theme = this._themeService.theme;
   faMoon = faMoon;
   faSun = faSun;
 
   toggleTheme(): void {
     const next = this.theme() === 'light' ? 'dark' : 'light';
-    this.themeService.setTheme(next);
+    this._themeService.setTheme(next)
   }
 }

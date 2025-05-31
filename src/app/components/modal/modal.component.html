@@ -1,0 +1,38 @@
+<section
+  class="modal-container {{theme() === 'dark' ? 'dark' : ''}}"
+  [class.active]="modalAppears()"
+  (click)="outslideClick($event)"
+>
+  <div class="modal-area">
+    <div>
+      <h2>
+        {{
+          modalMode() === 'add'
+          ?
+            'Nova transação'
+          :
+            'Editar transação'
+        }}
+      </h2>
+
+      <button
+        (click)="_mode.setModalAppears(false)"
+        (document:keydown.escape)="_mode.setModalAppears(false)"
+      >
+        <fa-icon [icon]="faXmark"></fa-icon>
+      </button>
+    </div>
+
+    <form class="modal-form">
+      <div class="modal-form-field">
+        <input placeholder="Descrição" type="text" name="description">
+      </div>
+      <div class="modal-form-field">
+        <input placeholder="Preço" type="number" name="amount">
+      </div>
+      <div class="modal-form-field">
+        <input placeholder="Categoria" type="text" name="category">
+      </div>
+    </form>
+  </div>
+</section>

@@ -19,11 +19,11 @@ import type { Swiper } from 'swiper/types';
 })
 export class HeaderResumeComponent implements AfterViewInit {
   @ViewChild('swiperEl') swiperEl!: ElementRef;
-  private themeService = inject(ThemeService);
-  theme = this.themeService.getTheme();
-  private transactionsResumeService = inject(TransactionsResumeService);
-  totalSales = this.transactionsResumeService.totalSales;
-  totalExpenses = this.transactionsResumeService.totalExpenses;
+  private _themeService = inject(ThemeService);
+  theme = this._themeService.theme;
+  private _transactionsResumeService = inject(TransactionsResumeService);
+  totalSales = this._transactionsResumeService.totalSales;
+  totalExpenses = this._transactionsResumeService.totalExpenses;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
   swiper!: Swiper;

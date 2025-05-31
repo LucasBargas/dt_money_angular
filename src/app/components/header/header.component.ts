@@ -4,6 +4,7 @@ import { ThemeService } from '../../services/theme.service';
 import { ContainerComponent } from "../container/container.component";
 import { RouterLink } from '@angular/router';
 import { HeaderResumeComponent } from "./header-resume/header-resume.component";
+import { ModalModeService } from '../../services/modaMode.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,13 @@ import { HeaderResumeComponent } from "./header-resume/header-resume.component";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  private themeService = inject(ThemeService);
-  theme = this.themeService.getTheme();
+  private _themeService = inject(ThemeService);
+  theme = this._themeService.theme;
+
+  mode = inject(ModalModeService);
+
+  onClick() {
+    this.mode.setModalMode('add')
+    this.mode.setModalAppears(true);
+  }
 }
