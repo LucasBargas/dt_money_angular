@@ -38,12 +38,12 @@
       width: auto;
       padding: 0 1.25rem;
       border-radius: .325rem;
-      background: #5E2EE5;
+      background: light.$color-secondary-hover;
       color: light.$color-text;
       transition: filter .3s;
 
       &:hover {
-        filter: brightness(.8); // escurece 10%
+        filter: brightness(.9);
       }
     }
   }
