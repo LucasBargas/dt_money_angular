@@ -28,19 +28,38 @@
       gap: .75rem;
       color: light.$color-text;
 
+      @media (max-width: 320px) {
+        gap: .375rem;
+      }
+
       h1 {
         font-size: 1.5rem;
+
+        @media (max-width: 320px) {
+          font-size: 1.25rem;
+        }
+      }
+
+      img {
+        @media (max-width: 320px) {
+          width: 34px;
+        }
       }
     }
 
     button {
       display: inline-block;
       width: auto;
-      padding: 0 1.25rem;
+      height: auto;
+      padding: 1rem 1.25rem;
       border-radius: .325rem;
       background: light.$color-secondary-hover;
       color: light.$color-text;
       transition: filter .3s;
+
+      @media (max-width: 320px) {
+        padding: .9375rem;
+      }
 
       &:hover {
         filter: brightness(.9);
