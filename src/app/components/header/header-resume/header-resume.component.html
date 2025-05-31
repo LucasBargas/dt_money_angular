@@ -1,38 +1,74 @@
 <div class="header-resume" [class.active]="theme() === 'dark'">
-  <div class="header-resume-area">
-    <div class="header-resume-area-single">
+  <swiper-container
+    #swiperEl
+    class="header-resume-area"
+    space-between="24"
+  >
+    <swiper-slide class="header-resume-area-single">
       <div>
         <h2>Entradas</h2>
         <figure>
           <img src="assets/images/arrow-green.png" alt="Arrow green">
         </figure>
+        <strong>{{ totalSales() | brlCurrency }}</strong>
       </div>
-      <strong>{{ totalSales() | brlCurrency }}</strong>
-    </div>
+    </swiper-slide>
 
-    <div class="header-resume-area-single">
+    <swiper-slide class="header-resume-area-single">
       <div>
         <h2>Saídas</h2>
         <figure>
           <img src="assets/images/arrow-wine.png" alt="Arrow wine">
         </figure>
+        <strong>{{ totalExpenses() | brlCurrency }}</strong>
       </div>
-      <strong>{{ totalExpenses() | brlCurrency }}</strong>
-    </div>
+    </swiper-slide>
 
-    <div class="header-resume-area-single">
-      <div>
+    <swiper-slide class="header-resume-area-single">
+      <div class="last">
         <h2>Total</h2>
         <figure>
           <img src="assets/images/dolar.png" alt="Dólar">
         </figure>
+        <strong>{{ (totalSales() - totalExpenses()) | brlCurrency }}</strong>
       </div>
-      <strong>{{ (totalSales() - totalExpenses()) | brlCurrency }}</strong>
-    </div>
-  </div>
+    </swiper-slide>
+  </swiper-container>
 
-  <ul class="slider-controller">
+  <!-- <ul class="slider-controller">
     <li><</li>
     <li>></li>
   </ul>
 </div>
+
+<swiper-container
+  slides-per-view="2"
+  navigation="true"
+  loop="true"
+  space-between="16"
+  class="my-swiper"
+>
+  <swiper-slide>
+    <div>
+      <h2>Entradas</h2>
+      <figure><img src="assets/images/arrow-green.png" alt="Arrow green"></figure>
+      <strong>{{ totalSales() | brlCurrency }}</strong>
+    </div>
+  </swiper-slide>
+
+  <swiper-slide>
+    <div>
+      <h2>Saídas</h2>
+      <figure><img src="assets/images/arrow-wine.png" alt="Arrow wine"></figure>
+      <strong>{{ totalExpenses() | brlCurrency }}</strong>
+    </div>
+  </swiper-slide>
+
+  <swiper-slide>
+    <div>
+      <h2>Total</h2>
+      <figure><img src="assets/images/dolar.png" alt="Dólar"></figure>
+      <strong>{{ (totalSales() - totalExpenses()) | brlCurrency }}</strong>
+    </div>
+  </swiper-slide>
+<!-- </swiper-container> -->
