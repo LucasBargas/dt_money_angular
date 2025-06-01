@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ModalModeService } from '../../services/modaMode.service';
+import { ModalModeService } from '../../services/modalMode.service';
 import { ThemeService } from '../../services/theme.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -15,13 +15,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class ModalComponent {
   private _themeService = inject(ThemeService);
   theme = this._themeService.theme;
-
   _mode = inject(ModalModeService);
   modalMode = this._mode.modalMode;
   modalAppears = this._mode.modalAppears;
-
   faXmark = faXmark;
-  type = 'Entrada';
+  type: string = 'Entrada';
 
   outslideClick(e: MouseEvent) {
     if(e.target === e.currentTarget)

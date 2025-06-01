@@ -5,7 +5,7 @@ import { ThemeService } from './services/theme.service';
 import { ToggleThemeButtonComponent } from "./components/toggle-theme-button/toggle-theme-button.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { ModalComponent } from "./components/modal/modal.component";
-import { ModalModeService } from './services/modaMode.service';
+import { ModalModeService } from './services/modalMode.service';
 
 @Component({
   selector: 'app-root',

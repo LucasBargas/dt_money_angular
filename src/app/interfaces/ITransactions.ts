@@ -3,6 +3,6 @@ export interface ITransactions {
   description: string;
   category: string;
   amount: string | number;
-  transactionType: 'Venda' | 'Gasto';
+  type: 'Venda' | 'Gasto';
   createdAt: string;
 }

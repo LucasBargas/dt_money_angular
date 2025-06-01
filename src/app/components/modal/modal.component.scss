@@ -26,8 +26,30 @@
       background: dark.$color-background;
 
       div {
-        h2, button {
+        h2, .modal-area-close {
           color: dark.$color-text;
+        }
+      }
+
+      .modal-form-field-options {
+        button {
+          background: dark.$color-surface;
+          border-radius: 0.325rem;
+          border: none;
+          color: dark.$color-text;
+
+          &:nth-of-type(1).active {
+            background: dark.$color-primary;
+          }
+        }
+      }
+
+      button[type='submit'] {
+        background: dark.$color-primary !important;
+        color: dark.$color-text !important;
+
+        &:hover {
+          opacity: .9;
         }
       }
     }
@@ -63,7 +85,7 @@
         margin-top: .25rem;
       }
 
-      button {
+      .modal-area-close {
         width: auto;
         height: auto;
         position: relative;
@@ -88,11 +110,58 @@
     .modal-form {
       padding-top: 2.5rem;
       display: grid;
-      gap: 1rem;
+      gap: 1.25rem;
 
       &-field {
         input {
           border-radius: 0.375rem;
+        }
+
+        &-options {
+          display: flex;
+          gap: 1rem;
+
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.325rem;
+            background: light.$color-background;
+            color: dark.$color-surface;
+            border: 1px solid #CCCCCC;
+            padding: 2rem 0;
+            gap: .5rem;
+
+            &:nth-of-type(1).active {
+              background: light.$color-secondary-hover;
+              color: light.$color-background;
+            }
+
+            &:nth-of-type(2).active {
+              background: dark.$color-warning;
+              color: light.$color-background;
+            }
+
+            img {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+      }
+
+      button[type='submit'] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: light.$color-secondary;
+        color: light.$color-background;
+        border-radius: 0.325rem;
+        transition: .3s;
+        margin-top: 1.25rem;
+
+        &:hover {
+          background: light.$color-secondary-hover;
         }
       }
     }

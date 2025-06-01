@@ -16,6 +16,7 @@
       </h2>
 
       <button
+        class="modal-area-close"
         (click)="_mode.setModalAppears(false)"
         (document:keydown.escape)="_mode.setModalAppears(false)"
       >
@@ -33,6 +34,33 @@
       <div class="modal-form-field">
         <input placeholder="Categoria" type="text" name="category">
       </div>
+
+      <div class="modal-form-field-options">
+        <button
+          [class.active]="type === 'Entrada'"
+          (click)="type = 'Entrada'"
+          type="button"
+        >
+          <figure>
+            <img
+              src="assets/images/{{theme() === 'dark' ? 'arrow-green.png' : 'arrow-purple.png'}}" alt="Arrow purple"
+            >
+          </figure>
+          <span>Entrada</span>
+        </button>
+        <button
+          [class.active]="type === 'Saída'"
+          (click)="type = 'Saída'"
+          type="button"
+        >
+          <figure>
+            <img src="assets/images/arrow-wine.png" alt="Arrow wine">
+          </figure>
+          <span>Saída</span>
+        </button>
+      </div>
+
+      <button type="submit">{{modalMode() === 'add' ? 'Cadastrar' : 'Editar'}}</button>
     </form>
   </div>
 </section>

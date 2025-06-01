@@ -17,12 +17,12 @@ export class TransactionsResumeService {
   }
 
   totalSales = computed(() =>
-    this._transactions().filter(t => t.transactionType === 'Venda')
+    this._transactions().filter(t => t.type === 'Venda')
       .reduce((acc, curr) => acc + Number(curr.amount), 0)
   );
 
   totalExpenses = computed(() =>
-    this._transactions().filter(t => t.transactionType === 'Gasto')
+    this._transactions().filter(t => t.type === 'Gasto')
       .reduce((acc, curr) => acc + Number(curr.amount), 0)
   );
 
