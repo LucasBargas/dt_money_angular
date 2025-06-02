@@ -22,10 +22,11 @@ export class ModalComponent implements OnInit {
   theme = this._themeService.theme;
   mode = inject(ModalModeService);
   modalMode = this.mode.modalMode;
+  currenModaltMode!: 'edit' | 'add';
   modalAppears = this.mode.modalAppears;
   faXmark = faXmark;
   type: string = 'Venda'
-  transaction = input<ITransactions>();
+  transaction  = input<ITransactions>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +35,9 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.modalMode() === 'add') {
+    this.currenModaltMode = this.modalMode();
+
+    if (this.currenModaltMode === 'add') {
       this.form = this.handleFormBuilder();
     } else {
       this.form = this.handleFormBuilder(this.transaction());
@@ -42,7 +45,7 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  private defaultValidators(value: string | undefined = '') {
+  private _defaultValidators(value: string | undefined = '') {
     return [
       value,
       Validators.compose([
@@ -53,12 +56,12 @@ export class ModalComponent implements OnInit {
   }
 
   handleFormBuilder(transaction?: ITransactions) {
-    const isEditMode = this.modalMode() === 'edit';
+    const isEditMode = this.currenModaltMode === 'edit';
 
     const formConfig: { [key: string]: any } = {
-      description: this.defaultValidators(transaction?.description),
-      category: this.defaultValidators(transaction?.category),
-      amount: this.defaultValidators(transaction?.amount !== undefined ? String(transaction.amount) : undefined),
+      description: this._defaultValidators(transaction?.description),
+      category: this._defaultValidators(transaction?.category),
+      amount: this._defaultValidators(transaction?.amount !== undefined ? String(transaction.amount) : undefined),
       type: [this.type],
     };
 
@@ -77,18 +80,18 @@ export class ModalComponent implements OnInit {
 
   onSubmit() {
     if (this.form.invalid) {
-      this.form.markAllAsTouched(); // Show all the errors when forms is submitted
+      this.form.markAllAsTouched();
       return;
     }
 
-    if (this.modalMode() === 'add') {
-      this.postTransaction();
+    if (this.currenModaltMode === 'add') {
+      this._postTransaction();
     } else {
-      console.log('Aqui vai ser para editar. Calma!')
+      this._updateTransaction();
     }
   }
 
-  postTransaction() {
+  private _postTransaction() {
     this.transactions.postTransaction(this.form.value).subscribe({
       next: () => {
         this.transactionsResume.fetchTransactions();
@@ -98,6 +101,10 @@ export class ModalComponent implements OnInit {
         console.error('Erro ao adicionar transação:', err);
       }
     });
+  }
+
+  private _updateTransaction() {
+    console.log('Estou fazendo uma edição')
   }
 
   hasError(field: string, error: string) {
@@ -111,13 +118,13 @@ export class ModalComponent implements OnInit {
   }
 
   closeModal() {
-    this.mode.setModalAppears(false);
     this.form.reset();
+    this.mode.setModalAppears(false);
 
-    if (this.modalMode() === 'add') {
-      this.setType('Venda')
+    if (this.currenModaltMode === 'add') {
+      this.setType('Venda');
     } else {
-      this.setType(this.transaction()!.type)
+      this.setType(this.transaction()!.type);
     }
   }
 }

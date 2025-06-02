@@ -7,7 +7,7 @@
     <div>
       <h2>
         {{
-          modalMode() === 'add'
+          currenModaltMode === 'add'
           ?
             'Nova transação'
           :
@@ -116,7 +116,7 @@
         </button>
       </div>
 
-      <button type="submit">{{modalMode() === 'add' ? 'Cadastrar' : 'Editar'}}</button>
+      <button type="submit">{{currenModaltMode === 'add' ? 'Cadastrar' : 'Editar'}}</button>
     </form>
   </div>
 </section>
