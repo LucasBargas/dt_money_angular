@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, finalize, Observable } from 'rxjs';
 import { ITransactions } from '../interfaces/ITransactions';
 import { environment } from '../../environments/environment.prod';
 
@@ -15,11 +15,14 @@ export class TransactionsService {
     'Authorization': `Bearer ${this._API_KEY}`,
     'Content-Type': 'application/json',
   });
+  public isLoading$ = new BehaviorSubject<boolean>(true);
 
   constructor(private http: HttpClient) {}
 
   getTransactions(): Observable<ITransactions[]> {
-    return this.http.get<ITransactions[]>(this._API_URL, { headers: this._headers });
+    return this.http.get<ITransactions[]>(this._API_URL, { headers: this._headers }).pipe(
+      finalize(() => this.isLoading$.next(false))
+    );
   }
 
   getTransactionById(id: string) {

@@ -1,6 +1,10 @@
-<app-toggle-theme-button></app-toggle-theme-button>
-<app-header></app-header>
-<main>
-  <router-outlet />
-</main>
-<app-modal></app-modal>
+<app-loading *ngIf="isLoading, else test"></app-loading>
+
+<ng-template #test>
+  <app-toggle-theme-button></app-toggle-theme-button>
+  <app-header></app-header>
+  <main>
+    <router-outlet />
+  </main>
+  <app-modal></app-modal>
+</ng-template>

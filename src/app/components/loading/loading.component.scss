@@ -1,0 +1,46 @@
+@use 'theme_light' as light;
+@use 'theme_dark' as dark;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 6000;
+  background: light.$color-secondary;
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .loader {
+      border: 8px solid transparent;
+      border-top: 8px solid light.$color-background;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin .9s linear infinite;
+    }
+  }
+
+  &.dark {
+    background: dark.$color-background;
+
+    .loading-wrapper {
+      border-color: dark.$color-text;
+    }
+  }
+}
