@@ -52,11 +52,11 @@
       }
 
       button[type='submit'] {
-        background: dark.$color-primary-hover !important;
+        background: dark.$color-primary !important;
         color: dark.$color-text !important;
 
         &:hover {
-          background: dark.$color-primary !important;
+          filter: brightness(.9);
         }
       }
     }
@@ -146,7 +146,7 @@
       button[type='submit'] {
         background: light.$color-secondary;
         color: light.$color-background;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
 
         &:hover {
           background: light.$color-secondary-hover;
@@ -154,6 +154,7 @@
       }
 
       &-options {
+        margin-top: .75rem;
         display: flex;
         gap: 1rem;
 
