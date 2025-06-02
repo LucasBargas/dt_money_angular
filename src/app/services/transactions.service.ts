@@ -21,4 +21,12 @@ export class TransactionsService {
   getTransactions(): Observable<ITransactions[]> {
     return this.http.get<ITransactions[]>(this._API_URL, { headers: this._headers });
   }
+
+  getTransactionById(id: string) {
+
+  }
+
+  postTransaction(transaction: ITransactions) {
+    return this.http.post<ITransactions>(this._API_URL, transaction, { headers: this._headers });
+  }
 }

@@ -1,4 +1,4 @@
-import { effect, Injectable, signal, WritableSignal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 
@@ -15,7 +15,7 @@ export class ThemeService {
     });
   }
 
-  setTheme(value: 'light' | 'dark') {
+  setTheme(value: 'light' | 'dark'): void {
     localStorage.setItem('theme', value);
     this._theme.set(value);
   }

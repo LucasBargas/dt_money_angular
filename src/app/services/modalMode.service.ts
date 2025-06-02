@@ -4,10 +4,10 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class ModalModeService {
-  private readonly _modalAppears = signal<boolean>(true);
-  private readonly _modalMode = signal<'edit' | 'add'>('add');
-
+  private readonly _modalAppears = signal<boolean>(false);
   readonly modalAppears = this._modalAppears;
+
+  private readonly _modalMode = signal<'edit' | 'add'>('add')
   readonly modalMode = this._modalMode;
 
   setModalMode(mode: 'edit' | 'add'): void {

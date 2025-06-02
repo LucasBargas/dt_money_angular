@@ -7,9 +7,11 @@
   >
     <swiper-slide class="header-resume-area-single">
       <div>
-        <h2>Entradas</h2>
+        <h2>Vendas</h2>
         <figure>
-          <img src="assets/images/arrow-green.png" alt="Arrow green">
+          <img
+              src="assets/images/{{theme() === 'dark' ? 'arrow-green.png' : 'arrow-purple.png'}}" alt="Arrow purple"
+            >
         </figure>
         <strong>{{ totalSales() | brlCurrency }}</strong>
       </div>
@@ -17,7 +19,7 @@
 
     <swiper-slide class="header-resume-area-single">
       <div>
-        <h2>Saídas</h2>
+        <h2>Gastos</h2>
         <figure>
           <img src="assets/images/arrow-wine.png" alt="Arrow wine">
         </figure>

@@ -17,7 +17,7 @@
   height: 100vh;
   overflow-y: auto;
   z-index: 3000;
-  transition: opacity .3s ease, visibility .3s ease;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 
   &.dark {
     background: rgba(18, 18, 20, .9);
@@ -26,15 +26,22 @@
       background: dark.$color-background;
 
       div {
-        h2, .modal-area-close {
+
+        h2,
+        .modal-area-close {
           color: dark.$color-text;
         }
       }
 
-      .modal-form-field-options {
+      .modal-form-field {
+        span {
+          color: dark.$color-warning-hover;
+        }
+      }
+
+      .modal-form-options {
         button {
           background: dark.$color-surface;
-          border-radius: 0.325rem;
           border: none;
           color: dark.$color-text;
 
@@ -45,11 +52,11 @@
       }
 
       button[type='submit'] {
-        background: dark.$color-primary !important;
+        background: dark.$color-primary-hover !important;
         color: dark.$color-text !important;
 
         &:hover {
-          opacity: .9;
+          background: dark.$color-primary !important;
         }
       }
     }
@@ -59,6 +66,7 @@
     visibility: visible;
     opacity: 1;
     pointer-events: all;
+    transition: opacity 0.3s ease;
 
     .modal-area {
       opacity: 1;
@@ -67,14 +75,14 @@
   }
 
   .modal-area {
+    opacity: 0;
     width: 100%;
     max-width: 535px;
     background: light.$color-surface;
     border-radius: 6px;
     padding: 2.875rem;
     transform: translate3d(0, 40px, 0);
-    opacity: 0;
-    transition: transform .3s ease, opacity .3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 
     div {
       display: flex;
@@ -112,56 +120,64 @@
       display: grid;
       gap: 1.25rem;
 
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.325rem;
+        transition: .3s;
+      }
+
       &-field {
+        display: flex;
+        flex-direction: column;
+
         input {
           border-radius: 0.375rem;
         }
 
-        &-options {
-          display: flex;
-          gap: 1rem;
-
-          button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.325rem;
-            background: light.$color-background;
-            color: dark.$color-surface;
-            border: 1px solid #CCCCCC;
-            padding: 2rem 0;
-            gap: .5rem;
-
-            &:nth-of-type(1).active {
-              background: light.$color-secondary-hover;
-              color: light.$color-background;
-            }
-
-            &:nth-of-type(2).active {
-              background: dark.$color-warning;
-              color: light.$color-background;
-            }
-
-            img {
-              width: 32px;
-              height: 32px;
-            }
-          }
+        span {
+          margin-top: .5rem;
+          font-size: .9325rem;
+          color: light.$color-warning-hover;
         }
       }
 
       button[type='submit'] {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         background: light.$color-secondary;
         color: light.$color-background;
-        border-radius: 0.325rem;
-        transition: .3s;
-        margin-top: 1.25rem;
+        margin-top: 1rem;
 
         &:hover {
           background: light.$color-secondary-hover;
+        }
+      }
+
+      &-options {
+        display: flex;
+        gap: 1rem;
+
+        button {
+          background: light.$color-background;
+          color: dark.$color-surface;
+          border: 1px solid #CCCCCC;
+          padding: 2rem 0;
+          gap: .5rem;
+
+          &:nth-of-type(1).active {
+            background: light.$color-secondary-hover;
+            color: light.$color-background;
+          }
+
+          &:nth-of-type(2).active {
+            background: dark.$color-warning;
+            color: light.$color-background;
+          }
+
+          img {
+            width: 32px;
+            height: 32px;
+          }
         }
       }
     }

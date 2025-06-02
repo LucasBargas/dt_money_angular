@@ -17,28 +17,84 @@
 
       <button
         class="modal-area-close"
-        (click)="_mode.setModalAppears(false)"
-        (document:keydown.escape)="_mode.setModalAppears(false)"
+        (click)="closeModal()"
+        (document:keydown.escape)="closeModal()"
       >
         <fa-icon [icon]="faXmark"></fa-icon>
       </button>
     </div>
 
-    <form class="modal-form">
+    <form
+      class="modal-form"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="form"
+    >
       <div class="modal-form-field">
-        <input placeholder="Descrição" type="text" name="description">
-      </div>
-      <div class="modal-form-field">
-        <input placeholder="Preço" type="number" name="amount">
-      </div>
-      <div class="modal-form-field">
-        <input placeholder="Categoria" type="text" name="category">
+        <input
+          placeholder="Descrição"
+          type="text"
+          name="description"
+          formControlName="description"
+        >
+        <span
+          *ngIf="hasError('description', 'required')"
+        >
+          A Descrição deve ser preenchida.
+        </span>
+
+        <span
+          *ngIf="hasError('description', 'pattern')"
+        >
+          A Descrição não pode conter apenas espaços.
+        </span>
       </div>
 
-      <div class="modal-form-field-options">
+      <div class="modal-form-field">
+        <input
+          placeholder="Preço"
+          type="number"
+          name="amount"
+          formControlName="amount"
+        >
+
+        <span
+          *ngIf="hasError('amount', 'required')"
+        >
+         O Preço deve ser preenchido.
+        </span>
+
+        <span
+          *ngIf="hasError('amount', 'pattern')"
+        >
+          o Preço não pode conter apenas espaços.
+        </span>
+      </div>
+
+      <div class="modal-form-field">
+        <input
+          placeholder="Categoria"
+          type="text"
+          name="category"
+          formControlName="category"
+        >
+
+        <span
+          *ngIf="hasError('category', 'required')"
+        >
+          A Categoria deve ser preenchida.
+        </span>
+
+        <span
+          *ngIf="hasError('category', 'pattern')"
+        >
+          A Categoria não pode conter apenas espaços.
+        </span>
+      </div>
+
+      <div class="modal-form-options">
         <button
-          [class.active]="type === 'Entrada'"
-          (click)="type = 'Entrada'"
+          [class.active]="type === 'Venda'"
+          (click)="setType('Venda')"
           type="button"
         >
           <figure>
@@ -46,17 +102,17 @@
               src="assets/images/{{theme() === 'dark' ? 'arrow-green.png' : 'arrow-purple.png'}}" alt="Arrow purple"
             >
           </figure>
-          <span>Entrada</span>
+          <span>Venda</span>
         </button>
         <button
-          [class.active]="type === 'Saída'"
-          (click)="type = 'Saída'"
+          [class.active]="type === 'Gasto'"
+          (click)="setType('Gasto')"
           type="button"
         >
           <figure>
             <img src="assets/images/arrow-wine.png" alt="Arrow wine">
           </figure>
-          <span>Saída</span>
+          <span>Gasto</span>
         </button>
       </div>
 

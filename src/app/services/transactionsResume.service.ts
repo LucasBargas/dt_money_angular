@@ -5,6 +5,7 @@ import { TransactionsService } from './transactions.service';
 @Injectable({ providedIn: 'root' })
 export class TransactionsResumeService {
   private _transactions = signal<ITransactions[]>([]);
+  readonly transactions = this._transactions;
 
   constructor(private transactionsService: TransactionsService) {
     this.fetchTransactions(); // Initial loading
@@ -17,16 +18,12 @@ export class TransactionsResumeService {
   }
 
   totalSales = computed(() =>
-    this._transactions().filter(t => t.type === 'Venda')
+    this.transactions().filter(t => t.type === 'Venda')
       .reduce((acc, curr) => acc + Number(curr.amount), 0)
   );
 
   totalExpenses = computed(() =>
-    this._transactions().filter(t => t.type === 'Gasto')
+    this.transactions().filter(t => t.type === 'Gasto')
       .reduce((acc, curr) => acc + Number(curr.amount), 0)
   );
-
-  getTransactions() {
-    return this._transactions;
-  }
 }

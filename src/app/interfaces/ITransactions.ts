@@ -1,8 +1,8 @@
 export interface ITransactions {
-  id: number;
+  id?: string;
   description: string;
   category: string;
-  amount: string | number;
+  amount: number;
   type: 'Venda' | 'Gasto';
-  createdAt: string;
+  created_at?: string;
 }
