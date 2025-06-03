@@ -3,30 +3,26 @@ import { Component, inject, input } from '@angular/core';
 import { ITransactions } from '../../interfaces/ITransactions';
 import { BrlCurrencyPipe } from '../../pipes/brl-currency.pipe';
 import { ModalModeService } from '../../services/modalMode.service';
-import { TransactionsService } from '../../services/transactions.service';
-import { TransactionsResumeService } from '../../services/transactionsResume.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from '../../services/theme.service';
+import { TransactionsDeleteModalComponent } from "./transactions-delete-modal/transactions-delete-modal.component";
 
 @Component({
-  selector: 'app-transactions-list',
+  selector: 'app-transactions',
   standalone: true,
-  imports: [CommonModule, BrlCurrencyPipe, FontAwesomeModule],
-  templateUrl: './transactions-list.component.html',
-  styleUrl: './transactions-list.component.scss'
+  imports: [CommonModule, BrlCurrencyPipe, FontAwesomeModule, TransactionsDeleteModalComponent],
+  templateUrl: './transactions.component.html',
+  styleUrl: './transactions.component.scss'
 })
-export class TransactionsListComponent {
+export class TransactionsComponent {
   transactions = input<ITransactions[]>();
   private _mode = inject(ModalModeService);
   faPen = faPen;
   faTrash = faTrash;
   theme = inject(ThemeService).theme;
-
-  constructor(
-    private transactionsService: TransactionsService,
-    private transactionsResume: TransactionsResumeService
-  ) { }
+  transactionRef!: ITransactions;
+  deleteModalIsActive = false;
 
   onEditButton(transaction: ITransactions) {
     this._mode.setSelectedTransaction(transaction);
@@ -34,15 +30,8 @@ export class TransactionsListComponent {
     this._mode.setModalAppears(true);
   }
 
-  onDeleteButton(transaction: ITransactions) {
-    this.transactionsService.deleteTransaction(transaction).subscribe({
-      next: () => {
-        this.transactionsResume.fetchTransactions();
-      },
-      error: (err) => {
-        console.error('Erro ao deletar a transação:', err);
-      }
-    });
+  seTransactionRef(transaction: ITransactions) {
+    this.transactionRef = transaction;
+    this.deleteModalIsActive = true;
   }
-
 }

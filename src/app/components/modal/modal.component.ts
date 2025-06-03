@@ -129,10 +129,10 @@ export class ModalComponent {
   }
 
   closeModal() {
-    this.form.reset();
     this.mode.setModalAppears(false);
 
     if (this.currenModaltMode === 'add') {
+      this.form.reset();
       this.setType('Venda');
     } else {
       this.setType(this.transaction()!.type);

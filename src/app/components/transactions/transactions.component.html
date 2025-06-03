@@ -24,7 +24,7 @@
           {{transaction.created_at | date:'dd/MM/yyyy'}}
         </li>
         <li>
-          <button (click)="onDeleteButton(transaction)">
+          <button (click)="seTransactionRef(transaction)">
             <fa-icon [icon]="faTrash"></fa-icon>
           </button>
           <button (click)="onEditButton(transaction)">
@@ -34,4 +34,6 @@
       </ul>
     </li>
   </ul>
+
+  <app-transactions-delete-modal [transactionRef]="transactionRef" [(deleteModalIsActive)]="deleteModalIsActive">></app-transactions-delete-modal>
 </section>

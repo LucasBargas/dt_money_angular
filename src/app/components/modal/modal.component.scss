@@ -26,7 +26,6 @@
       background: dark.$color-background;
 
       div {
-
         h2,
         .modal-area-close {
           color: dark.$color-text;
@@ -75,7 +74,6 @@
   }
 
   .modal-area {
-    opacity: 0;
     width: 100%;
     max-width: 535px;
     background: light.$color-surface;

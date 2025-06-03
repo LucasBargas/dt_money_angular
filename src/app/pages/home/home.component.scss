@@ -2,7 +2,7 @@
 @use 'theme_dark' as dark;
 
 .home {
-  padding-top: 8rem;
+  padding: 8rem 0 5rem 0;
 
   &.active {
     fa-icon {

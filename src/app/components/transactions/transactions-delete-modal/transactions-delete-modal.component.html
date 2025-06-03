@@ -1,0 +1,10 @@
+<div (click)="outsideClick($event)" [class.active]="deleteModalIsActive()" class="modal-delete" [ngClass]="theme() === 'dark' ? 'dark' : ''">
+  <div class="modal-delete-area">
+    <div><button type="button" (click)="deleteModalIsActiveChange.emit(false)"><fa-icon [icon]="faXmark"></fa-icon></button></div>
+    <h2>Tem certeza que deseja deletar esta transação?</h2>
+    <div>
+      <button (click)="onClick()" type="button">Confimar</button>
+      <button (click)="deleteModalIsActiveChange.emit(false)" type="button">Cancelar</button>
+    </div>
+  </div>
+</div>
