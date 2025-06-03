@@ -21,6 +21,14 @@
           &.green {
             color: dark.$color-primary !important;
           }
+
+          button {
+            &:nth-of-type(1) {
+              fa-icon {
+                color: light.$color-primary;
+              }
+            }
+          }
         }
       }
     }
@@ -80,7 +88,7 @@
 
           &:nth-of-type(1) {
             fa-icon {
-              color: light.$color-primary;
+              color: light.$color-secondary;
             }
           }
 
