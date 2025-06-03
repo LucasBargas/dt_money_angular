@@ -20,28 +20,50 @@
   transition: .2s;
   box-shadow: rgba(34, 34, 34, 0.37) -2px 1px 23px -1px;
 
+  @media (max-width: 1024px) {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    transform: translateY(0);
+    transform: rotate(-90deg);
+  }
+
   fa-icon {
     font-size: 1.125rem;
     color: #B8860B;
     transition: .2s;
+
+    &.fa-moon {
+      @media (max-width: 1024px) {
+        transform: rotate(-40deg);
+        z-index: -1;
+      }
+    }
   }
 
   .toggle-button-ball {
     position: absolute;
-    left: 0;
     right: 0;
     margin: auto;
     top: 0;
-    transform: translateY(100%);
+    transform: translateY(108%);
     border-radius: 100%;
     background: light.$color-secondary;
     height: 2.125rem;
     width: 2.125rem;
     transition: transform .2s ease;
+
+    @media (max-width: 1024px) {
+      background: light.$color-secondary-hover;
+    }
   }
 
   &.active {
     background: dark.$color-secondary;
+
+    @media (max-width: 1024px) {
+      background: dark.$color-surface;
+    }
 
     .toggle-button-ball {
       transform: translateY(0%);
