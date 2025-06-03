@@ -22,6 +22,6 @@
 
     <p *ngIf="filteredTransactions().length === 0 && search().length > 0">Nenhuma transação registrada com: "{{search()}}".</p>
 
-    <app-transactions-list [transactions]="filteredTransactions().reverse()"></app-transactions-list>
+    <app-transactions-list [transactions]="filteredTransactions()"></app-transactions-list>
   </app-container>
 </section>
