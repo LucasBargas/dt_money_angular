@@ -13,13 +13,13 @@
         <li [ngClass]="transaction.type === 'Gasto' ? 'red' : 'green'">{{transaction.amount | brlCurrency}}</li>
         <li>
           <figure>
-            <img src="assets/images/sale.svg" alt="">
+            <img src="assets/images/sale.svg" alt="Venda">
           </figure>
           <span>{{transaction.category}}</span>
         </li>
         <li>
           <figure>
-            <img src="assets/images/calendar.svg" alt="">
+            <img src="assets/images/calendar.svg" alt="Calendário">
           </figure>
           {{transaction.created_at | date:'dd/MM/yyyy'}}
         </li>
