@@ -20,7 +20,9 @@ export class TransactionsService {
   constructor(private http: HttpClient) { }
 
   getTransactions(): Observable<ITransactions[]> {
-    return this.http.get<ITransactions[]>(this._API_URL, { headers: this._headers }).pipe(
+    const url = `${this._API_URL}?order=created_at.desc`;
+
+    return this.http.get<ITransactions[]>(url, { headers: this._headers }).pipe(
       finalize(() => this.isLoading$.next(false))
     );
   }
