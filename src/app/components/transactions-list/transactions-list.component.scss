@@ -1,0 +1,97 @@
+@use 'theme_light' as light;
+@use 'theme_dark' as dark;
+
+.transactions-area {
+  padding-top: 2.5rem;
+
+  &.active {
+    .transactions-area-header {
+      li {
+        color: dark.$color-text;
+      }
+    }
+
+    .transactions-area-list {
+      ul {
+        background: dark.$color-secondary;
+
+        li {
+          color: dark.$color-text;
+
+          &.green {
+            color: dark.$color-primary !important;
+          }
+        }
+      }
+    }
+  }
+
+  &-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0 2rem 1.25rem 2rem;
+
+    li {
+      font-weight: 500;
+      color: dark.$color-surface;
+    }
+  }
+
+  &-list {
+    display: grid;
+    gap: .75rem;
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: light.$color-surface;
+      padding: 1.25rem 2rem;
+      border-radius: 6px;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        color: dark.$color-surface;
+
+        &:nth-of-type(5) {
+          display: flex;
+          justify-content: flex-end;
+          gap: .75rem;
+        }
+
+        &.red {
+          color: light.$color-warning !important;
+
+          &::before {
+            content: '-';
+          }
+        }
+
+        button {
+          background: transparent;
+          width: auto;
+          height: auto;
+          padding: .25rem 0 .25rem .25rem;
+
+          fa-icon {
+            font-size: 1.125rem;
+          }
+
+          &:nth-of-type(1) {
+            fa-icon {
+              color: light.$color-primary;
+            }
+          }
+
+          &:nth-of-type(2) {
+            fa-icon {
+              color: light.$color-warning;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

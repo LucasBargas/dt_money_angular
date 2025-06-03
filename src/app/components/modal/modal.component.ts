@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, effect, inject, input, OnInit } from '@angular/core';
 import { ModalModeService } from '../../services/modalMode.service';
 import { ThemeService } from '../../services/theme.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,7 @@ import { TransactionsService } from '../../services/transactions.service';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
   form!: FormGroup;
   private _themeService = inject(ThemeService);
   theme = this._themeService.theme;
@@ -26,23 +26,26 @@ export class ModalComponent implements OnInit {
   modalAppears = this.mode.modalAppears;
   faXmark = faXmark;
   type: string = 'Venda'
-  transaction  = input<ITransactions>();
+  transaction = this.mode.selectedTransaction;
 
   constructor(
     private formBuilder: FormBuilder,
     private transactionsResume: TransactionsResumeService,
     private transactions: TransactionsService
-  ) { }
+  ) {
+    effect(() => {
+      const mode = this.modalMode();
 
-  ngOnInit(): void {
-    this.currenModaltMode = this.modalMode();
+      this.currenModaltMode = mode;
 
-    if (this.currenModaltMode === 'add') {
-      this.form = this.handleFormBuilder();
-    } else {
-      this.form = this.handleFormBuilder(this.transaction());
-      this.setType(this.transaction()!.type);
-    }
+      if (mode === 'add' || !this.transaction()) {
+        this.form = this.handleFormBuilder();
+        this.setType('Venda');
+      } else {
+        this.form = this.handleFormBuilder(this.transaction()!);
+        this.setType(this.transaction()!.type);
+      }
+    });
   }
 
   private _defaultValidators(value: string | undefined = '') {
@@ -104,7 +107,15 @@ export class ModalComponent implements OnInit {
   }
 
   private _updateTransaction() {
-    console.log('Estou fazendo uma edição')
+    this.transactions.updateTransaction(this.form.value).subscribe({
+      next: () => {
+        this.transactionsResume.fetchTransactions();
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error('Erro ao adicionar transação:', err);
+      }
+    });
   }
 
   hasError(field: string, error: string) {

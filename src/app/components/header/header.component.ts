@@ -17,10 +17,10 @@ export class HeaderComponent {
   private _themeService = inject(ThemeService);
   theme = this._themeService.theme;
 
-  mode = inject(ModalModeService);
+  private _mode = inject(ModalModeService);
 
   onClick() {
-    this.mode.setModalMode('add')
-    this.mode.setModalAppears(true);
+    this._mode.setModalMode('add')
+    this._mode.setModalAppears(true);
   }
 }

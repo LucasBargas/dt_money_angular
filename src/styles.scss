@@ -26,7 +26,7 @@ html {
       color: dark.$color-text;
 
       input {
-        background: dark.$color-secondary;
+        background: dark.$color-secondary !important;
         color: dark.$color-text;
         border-color: transparent;
 
@@ -55,7 +55,7 @@ html {
       }
 
       &::placeholder {
-        font-weight: 600;
+        font-weight: 500;
       }
     }
 
@@ -79,6 +79,10 @@ html {
 
     a {
       text-decoration: none;
+    }
+
+    img {
+      display: block;
     }
   }
 }

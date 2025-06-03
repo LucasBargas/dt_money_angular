@@ -17,7 +17,7 @@ export class TransactionsService {
   });
   public isLoading$ = new BehaviorSubject<boolean>(true);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getTransactions(): Observable<ITransactions[]> {
     return this.http.get<ITransactions[]>(this._API_URL, { headers: this._headers }).pipe(
@@ -25,11 +25,21 @@ export class TransactionsService {
     );
   }
 
-  getTransactionById(id: string) {
-
-  }
-
   postTransaction(transaction: ITransactions) {
     return this.http.post<ITransactions>(this._API_URL, transaction, { headers: this._headers });
+  }
+
+  updateTransaction(transaction: ITransactions) {
+    const url = `${this._API_URL}?id=eq.${transaction.id}`;
+    return this.http.put<ITransactions>(url, transaction, {
+      headers: this._headers,
+    });
+  }
+
+  deleteTransaction(transaction: ITransactions) {
+    const url = `${this._API_URL}?id=eq.${transaction.id}`;
+    return this.http.delete<ITransactions>(url, {
+      headers: this._headers,
+    });
   }
 }

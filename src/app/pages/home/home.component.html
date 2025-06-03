@@ -1,1 +1,27 @@
-<p>Home</p>
+<section class="home" [class.active]="theme() === 'dark'">
+  <app-container>
+    <form class="home-form">
+      <input
+        [(ngModel)]="search"
+        name="search"
+        type="text"
+        placeholder="Busque uma transação"
+        #input
+      />
+
+      <div class="home-form-actions">
+        <button class="clear" *ngIf="clearInput" type="button" (click)="search.set(''); input.focus()">
+          <fa-icon [icon]="faXmark"></fa-icon>
+        </button>
+
+        <button type="button" (click)="input.focus()">
+          <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        </button>
+      </div>
+    </form>
+
+    <p *ngIf="filteredTransactions().length === 0 && search().length > 0">Nenhuma transação registrada com: "{{search()}}".</p>
+
+    <app-transactions-list [transactions]="filteredTransactions().reverse()"></app-transactions-list>
+  </app-container>
+</section>

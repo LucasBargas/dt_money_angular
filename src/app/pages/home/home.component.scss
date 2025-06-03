@@ -1,0 +1,56 @@
+@use 'theme_light' as light;
+@use 'theme_dark' as dark;
+
+.home {
+  padding-top: 8rem;
+
+  &.active {
+    fa-icon {
+      color: dark.$color-primary !important;
+    }
+  }
+
+  &-form {
+    position: relative;
+
+    input {
+      border-radius: 0.375rem;
+      padding-right: 5.7sdsd5rem;
+      background: light.$color-surface;
+    }
+
+    &-actions {
+      height: 100%;
+      display: flex;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      gap: .5rem;
+      padding-right: 1rem;
+
+      button {
+        width: auto;
+        background: transparent;
+        cursor: default;
+        background: transparent;
+        padding: 0 .25rem;
+
+        fa-icon {
+          font-size: 1.5rem;
+          color: dark.$color-secondary;
+        }
+
+        &.clear {
+          fa-icon {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+
+  p {
+    margin-top: 2.5rem;
+  }
+}
