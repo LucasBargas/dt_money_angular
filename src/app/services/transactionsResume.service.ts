@@ -28,18 +28,20 @@ export class TransactionsResumeService {
       .reduce((acc, curr) => acc + Number(curr.amount), 0)
   );
 
-filteredTransactions = computed(() => {
-  const query = this.search().toLowerCase().trim();
-  const items = this._transactions();
+  filteredTransactions = computed(() => {
+    const normalize = (text: string) =>
+      text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  // Se a string de busca for menor que 3 caracteres, retorna todos os itens sem aplicar filtro
-  if (query.length < 3) return items;
+    const query = normalize(this.search().trim());
+    const items = this._transactions();
 
-  return items.filter((transaction) =>
-    transaction.description?.toLowerCase().includes(query) ||
-    transaction.type?.toLowerCase().includes(query) ||
-    transaction.category?.toLowerCase().includes(query) ||
-    transaction.amount.toString().includes(query)
-  );
-});
+    if (query.length < 3) return items;
+
+    return items.filter((transaction) =>
+      normalize(transaction.description || "").includes(query) ||
+      normalize(transaction.type || "").includes(query) ||
+      normalize(transaction.category || "").includes(query) ||
+      transaction.amount.toString().includes(query)
+    );
+  });
 }

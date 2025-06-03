@@ -26,7 +26,7 @@ export class HomeComponent {
 
   constructor() {
     effect(() => {
-      this.clearInput = this.search().trim().length > 3;
+      this.clearInput = this.search().trim().length > 2;
     });
   }
 }
