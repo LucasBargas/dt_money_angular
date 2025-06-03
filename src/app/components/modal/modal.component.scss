@@ -19,6 +19,11 @@
   z-index: 3000;
   transition: .3s;
 
+  @media (max-width: 480px) {
+    align-items: flex-end;
+    padding: 0;
+  }
+
   &.dark {
     background: rgba(18, 18, 20, .9);
 
@@ -26,6 +31,7 @@
       background: dark.$color-background;
 
       div {
+
         h2,
         .modal-area-close {
           color: dark.$color-text;
@@ -77,10 +83,16 @@
     width: 100%;
     max-width: 535px;
     background: light.$color-surface;
-    border-radius: 6px;
+    border-radius: .375rem;
     padding: 2.875rem;
     transform: translate3d(0, 40px, 0);
     transition: .3s;
+
+    @media (max-width: 480px) {
+      border-radius: 1.325rem 1.325rem 0 0;
+      padding: 2.875rem 1.5rem 3.5rem 1.5rem;
+      transform: translate3d(0, 0, 0);
+    }
 
     div {
       display: flex;
@@ -110,6 +122,11 @@
         fa-icon {
           font-size: 1.5rem;
         }
+
+        @media (max-width: 480px) {
+          top: -1rem;
+          right: -.5rem;
+        }
       }
     }
 
@@ -132,6 +149,10 @@
 
         input {
           border-radius: .375rem;
+
+          @media (max-width: 480px) {
+            height: 4.125rem;
+          }
         }
 
         span {
