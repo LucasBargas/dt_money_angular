@@ -1,23 +1,17 @@
 <div class="header-resume" [class.active]="theme() === 'dark'">
-  <swiper-container
-    #swiperEl
-    class="header-resume-area"
-    space-between="24"
-    loop="true"
-  >
-    <swiper-slide class="header-resume-area-single">
+  <div #sliderRef class="header-resume-area" [class]="calc === 1 ? 'um' : calc === 2 ? 'dois' : 'tres'"
+    [style.transform]="'translateX(' + position + 'px)'">
+    <div class="header-resume-area-single">
       <div>
         <h2>Vendas</h2>
         <figure>
-          <img
-              src="assets/images/{{theme() === 'dark' ? 'arrow-green.png' : 'arrow-purple.png'}}" alt="Arrow purple"
-            >
+          <img src="assets/images/{{theme() === 'dark' ? 'arrow-green.png' : 'arrow-purple.png'}}" alt="Arrow purple">
         </figure>
         <strong>{{ totalSales() | brlCurrency }}</strong>
       </div>
-    </swiper-slide>
+    </div>
 
-    <swiper-slide class="header-resume-area-single">
+    <div class="header-resume-area-single">
       <div>
         <h2>Gastos</h2>
         <figure>
@@ -25,9 +19,9 @@
         </figure>
         <strong>{{ totalExpenses() | brlCurrency }}</strong>
       </div>
-    </swiper-slide>
+    </div>
 
-    <swiper-slide class="header-resume-area-single">
+    <div class="header-resume-area-single">
       <div class="last">
         <h2>Total</h2>
         <figure>
@@ -35,15 +29,15 @@
         </figure>
         <strong>{{ (totalSales() - totalExpenses()) | brlCurrency }}</strong>
       </div>
-    </swiper-slide>
+    </div>
 
-  </swiper-container>
+  </div>
 
   <div class="slider-controller">
-    <button (click)="swiper.slidePrev()">
+    <button (click)="clickOnPrev()">
       <fa-icon [icon]="faArrowLeft"></fa-icon>
     </button>
-    <button (click)="swiper.slideNext()">
+    <button (click)="clickOnNext()">
       <fa-icon [icon]="faArrowRight"></fa-icon>
     </button>
   </div>
