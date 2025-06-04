@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { ITransactions } from '../../interfaces/ITransactions';
 import { BrlCurrencyPipe } from '../../pipes/brl-currency.pipe';
-import { ModalModeService } from '../../services/modalMode.service';
+import { ModalModeService } from '../../services/modal-mode.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from '../../services/theme.service';
 import { TransactionsDeleteModalComponent } from "./transactions-delete-modal/transactions-delete-modal.component";
+import { TransactionsResumeService } from '../../services/transactions-resume.service';
 
 @Component({
   selector: 'app-transactions',
@@ -16,7 +17,9 @@ import { TransactionsDeleteModalComponent } from "./transactions-delete-modal/tr
   styleUrl: './transactions.component.scss'
 })
 export class TransactionsComponent {
-  transactions = input<ITransactions[]>();
+  private _transactionsResume = inject(TransactionsResumeService);
+  filteredTransactions = this._transactionsResume.filteredTransactions;
+  search = this._transactionsResume.search;
   private _mode = inject(ModalModeService);
   faPen = faPen;
   faTrash = faTrash;
@@ -33,5 +36,10 @@ export class TransactionsComponent {
   seTransactionRef(transaction: ITransactions) {
     this.transactionRef = transaction;
     this.deleteModalIsActive = true;
+  }
+
+  onClick() {
+    this._mode.setModalMode('add')
+    this._mode.setModalAppears(true);
   }
 }

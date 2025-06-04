@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, input, OnInit } from '@angular/core';
-import { ModalModeService } from '../../services/modalMode.service';
+import { Component, effect, inject } from '@angular/core';
+import { ModalModeService } from '../../services/modal-mode.service';
 import { ThemeService } from '../../services/theme.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ITransactions } from '../../interfaces/ITransactions';
-import { TransactionsResumeService } from '../../services/transactionsResume.service';
+import { TransactionsResumeService } from '../../services/transactions-resume.service';
 import { TransactionsService } from '../../services/transactions.service';
 
 @Component({

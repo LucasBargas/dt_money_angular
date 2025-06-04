@@ -4,7 +4,7 @@ import { ThemeService } from '../../services/theme.service';
 import { ContainerComponent } from "../container/container.component";
 import { RouterLink } from '@angular/router';
 import { HeaderResumeComponent } from "./header-resume/header-resume.component";
-import { ModalModeService } from '../../services/modalMode.service';
+import { ModalModeService } from '../../services/modal-mode.service';
 
 @Component({
   selector: 'app-header',

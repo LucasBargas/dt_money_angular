@@ -20,8 +20,6 @@
       </div>
     </form>
 
-    <p *ngIf="filteredTransactions().length === 0 && search().length > 0">Nenhuma transação registrada com: "{{search()}}".</p>
-
-    <app-transactions [transactions]="filteredTransactions()"></app-transactions>
+    <app-transactions></app-transactions>
   </app-container>
 </section>

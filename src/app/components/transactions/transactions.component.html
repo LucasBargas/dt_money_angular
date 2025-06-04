@@ -1,4 +1,4 @@
-<section *ngIf="transactions()!.length > 0" class="transactions-area" [class.active]="theme() === 'dark'">
+<section *ngIf="filteredTransactions()!.length > 0" class="transactions-area" [class.active]="theme() === 'dark'">
   <ul class="transactions-area-header">
     <li>Descrição</li>
     <li>Valor</li>
@@ -7,7 +7,7 @@
   </ul>
 
   <ul class="transactions-area-list">
-    <li *ngFor="let transaction of transactions()">
+    <li *ngFor="let transaction of filteredTransactions()">
       <ul>
         <li>{{transaction.description}}</li>
         <li [ngClass]="transaction.type === 'Gasto' ? 'red' : 'green'">{{transaction.amount | brlCurrency}}</li>
@@ -35,5 +35,23 @@
     </li>
   </ul>
 
-  <app-transactions-delete-modal [transactionRef]="transactionRef" [(deleteModalIsActive)]="deleteModalIsActive">></app-transactions-delete-modal>
+  <app-transactions-delete-modal [transactionRef]="transactionRef"
+    [(deleteModalIsActive)]="deleteModalIsActive">></app-transactions-delete-modal>
 </section>
+
+
+<section *ngIf="!search() && filteredTransactions()!.length === 0" class="without-transactions-area"
+  [class.active]="theme() === 'dark'">
+  <figure>
+    <img src="assets/images/{{theme() === 'dark' ? 'oush-dark.png' : 'oush-light.png'}}" alt="">
+  </figure>
+
+  <div>
+    <h2>No momento não temos transações cadastradas!</h2>
+    <h2>Que tal cadastrar a primeira?</h2>
+  </div>
+
+  <button (click)="onClick()">Cadastrar</button>
+</section>
+
+<p [class.active]="theme() === 'dark'" *ngIf="filteredTransactions().length === 0 && search().length > 0">Nenhuma transação registrada com: "{{search()}}".</p>

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../services/theme.service';
-import { TransactionsResumeService } from '../../../services/transactionsResume.service';
+import { TransactionsResumeService } from '../../../services/transactions-resume.service';
 import { BrlCurrencyPipe } from '../../../pipes/brl-currency.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';

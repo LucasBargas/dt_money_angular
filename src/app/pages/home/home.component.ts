@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../services/theme.service';
-import { TransactionsResumeService } from '../../services/transactionsResume.service';
+import { TransactionsResumeService } from '../../services/transactions-resume.service';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +20,7 @@ export class HomeComponent {
   faXmark = faXmark;
   theme = inject(ThemeService).theme;
   clearInput: boolean = false;
-  private _transactionsResume = inject(TransactionsResumeService);
-  filteredTransactions = this._transactionsResume.filteredTransactions;
-  search = this._transactionsResume.search;
+  search = inject(TransactionsResumeService).search;
 
   constructor() {
     effect(() => {

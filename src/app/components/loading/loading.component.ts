@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ContainerComponent } from "../container/container.component";
 import { ThemeService } from '../../services/theme.service';
 

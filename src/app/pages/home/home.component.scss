@@ -8,10 +8,6 @@
     fa-icon {
       color: dark.$color-primary !important;
     }
-
-    p {
-      color: dark.$color-text;
-    }
   }
 
   &-form {
@@ -61,10 +57,5 @@
         }
       }
     }
-  }
-
-  p {
-    margin-top: 2.5rem;
-    color: dark.$color-surface;
   }
 }
