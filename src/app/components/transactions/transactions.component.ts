@@ -27,9 +27,11 @@ export class TransactionsComponent {
   transactionRef!: ITransactions;
   deleteModalIsActive = false;
 
+  visibleCount = 8;
+
   onEditButton(transaction: ITransactions) {
     this._mode.setSelectedTransaction(transaction);
-    this._mode.setModalMode('edit')
+    this._mode.setModalMode('edit');
     this._mode.setModalAppears(true);
   }
 
@@ -39,7 +41,16 @@ export class TransactionsComponent {
   }
 
   onClick() {
-    this._mode.setModalMode('add')
+    this._mode.setModalMode('add');
     this._mode.setModalAppears(true);
+  }
+
+  loadMore() {
+    this.visibleCount += 8;
+  }
+
+  canLoadMore(): boolean {
+    const total = this.filteredTransactions().length;
+    return total > 8 && total > this.visibleCount;
   }
 }

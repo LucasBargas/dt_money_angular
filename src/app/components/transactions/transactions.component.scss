@@ -32,6 +32,15 @@
         }
       }
     }
+
+    .load-more-button {
+      background: light.$color-primary;
+
+      &:hover {
+        background: light.$color-primary;
+        opacity: .9;
+      }
+    }
   }
 
   &-header {
@@ -152,7 +161,24 @@
           }
         }
       }
+    }
+  }
 
+  .load-more-button {
+    margin-top: 2rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    padding: 1rem 1.25rem;
+    border-radius: 0.325rem;
+    background: light.$color-secondary-hover;
+    color: light.$color-text;
+    transition: .3s;
+
+    &:hover {
+      background: light.$color-secondary;
     }
   }
 }

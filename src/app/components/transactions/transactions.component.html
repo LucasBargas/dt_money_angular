@@ -7,7 +7,7 @@
   </ul>
 
   <ul class="transactions-area-list">
-    <li *ngFor="let transaction of filteredTransactions()">
+    <li *ngFor="let transaction of filteredTransactions().slice(0, visibleCount)">
       <ul>
         <li>{{transaction.description}}</li>
         <li [ngClass]="transaction.type === 'Gasto' ? 'red' : 'green'">{{transaction.amount | brlCurrency}}</li>
@@ -35,6 +35,10 @@
     </li>
   </ul>
 
+  <button *ngIf="canLoadMore()" (click)="loadMore()" class="load-more-button">
+    Carregar mais
+  </button>
+
   <app-transactions-delete-modal [transactionRef]="transactionRef"
     [(deleteModalIsActive)]="deleteModalIsActive">></app-transactions-delete-modal>
 </section>
@@ -54,4 +58,5 @@
   <button (click)="onClick()">Cadastrar</button>
 </section>
 
-<p [class.active]="theme() === 'dark'" *ngIf="filteredTransactions().length === 0 && search().length > 0">Nenhuma transação registrada com: "{{search()}}".</p>
+<p [class.active]="theme() === 'dark'" *ngIf="filteredTransactions().length === 0 && search().length > 0">Nenhuma
+  transação registrada com: "{{search()}}".</p>
