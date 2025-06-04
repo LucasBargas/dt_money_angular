@@ -47,7 +47,7 @@
 <section *ngIf="!search() && filteredTransactions()!.length === 0" class="without-transactions-area"
   [class.active]="theme() === 'dark'">
   <figure>
-    <img src="assets/images/{{theme() === 'dark' ? 'oush-dark.png' : 'oush-light.png'}}" alt="">
+    <img height="90" width="360" ngSrc="assets/images/{{theme() === 'dark' ? 'oush-dark.png' : 'oush-light.png'}}" alt="Sem transações cadastradas" priority>
   </figure>
 
   <div>

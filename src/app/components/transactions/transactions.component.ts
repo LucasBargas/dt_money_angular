@@ -8,11 +8,12 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from '../../services/theme.service';
 import { TransactionsDeleteModalComponent } from "./transactions-delete-modal/transactions-delete-modal.component";
 import { TransactionsResumeService } from '../../services/transactions-resume.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [CommonModule, BrlCurrencyPipe, FontAwesomeModule, TransactionsDeleteModalComponent],
+  imports: [CommonModule, BrlCurrencyPipe, FontAwesomeModule, TransactionsDeleteModalComponent, NgOptimizedImage],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })
