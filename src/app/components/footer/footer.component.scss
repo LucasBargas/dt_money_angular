@@ -1,0 +1,38 @@
+@use 'theme_dark' as dark;
+@use 'theme_light' as light;
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+
+  &.active {
+    div {
+      p {
+        color: dark.$color-text;
+      }
+
+      a {
+        color: dark.$color-primary;
+      }
+    }
+  }
+
+  div {
+    text-align: center;
+    line-height: 2rem;
+
+    p {
+      color: dark.$color-surface;
+    }
+
+    a {
+      color: light.$color-secondary-hover;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

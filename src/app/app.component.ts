@@ -7,10 +7,11 @@ import { HeaderComponent } from "./components/header/header.component";
 import { ModalComponent } from "./components/modal/modal.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { TransactionsService } from './services/transactions.service';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, HeaderComponent, ToggleThemeButtonComponent, ModalComponent, LoadingComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, ToggleThemeButtonComponent, ModalComponent, LoadingComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,10 +1,14 @@
-<app-loading *ngIf="isLoading, else test"></app-loading>
+<app-loading *ngIf="isLoading, else noLoading"></app-loading>
 
-<ng-template #test>
+
+<ng-template #noLoading>
+  <section class="app-container">
   <app-toggle-theme-button></app-toggle-theme-button>
   <app-header></app-header>
   <main>
     <router-outlet />
   </main>
   <app-modal></app-modal>
+  <app-footer></app-footer>
+  </section>
 </ng-template>
