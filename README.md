@@ -1,59 +1,52 @@
-# DtmoneyAngular
+## Projeto DT Money
+**DT Money versão Angular** é uma re-leitura feita com o framework mencionado, anteriormente desenvolvido com a biblioteca React JS, mas com algumas alterações, incluindo o uso, nesta versão, do Supabase como base de dados.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+### Link para visualizar o projeto
+<https://dt-money-angular.vercel.app/>
 
-## Development server
+### Principais recursos do App
+* Cadastro de transações;
+* Armazenamento de transações no LocalStorage para que a transação fique salva;
+* Edição ou exclusão de uma transação específica;
+* Pesquisar transação por descrição ou categoria.
 
-To start a local development server, run:
+### Tecnologias utilizadas
+<table>
+  <tr>
+    <td>Angular</td>
+    <td>Angular Font Awesome</td>
+  </tr>
+  <tr>
+    <td>19.2</td>
+    <td>1.0</td>
+  <tr>
+</table>
 
+### Como executar este Front End
+
+#### Pré-requisitos
+* Possuir o Nodejs instalado;
+
+#### Clone o repositório
 ```bash
-ng serve
+git clone https://github.com/LucasBargas/dt_money_angular.git
+```
+#### Entre na pasta
+```bash
+cd dt_money_angular
+```
+#### Instale as dependências
+```bash
+npm install
+```
+#### Execute o App
+```bash
+npm run dev
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Autor
+Lucas Bargas da Silva
+</br>
+<https://projetoslucasbargas.vercel.app/>
+</br>
+<https://www.linkedin.com/in/lucas-bargas/>

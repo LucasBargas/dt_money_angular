@@ -9,7 +9,7 @@
     "package.json": true,
     "angular.json": true,
     ".gitignore": true,
-    "README.md": true,
+    // "README.md": true,
     "favicon.ico": true,
     ".browserslistrc": true,
     "karma.conf.js": true,
@@ -17,5 +17,6 @@
     "tsconfig.app.json": true,
     "tsconfig.spec.json": true,
     "polyfills.ts": true,
-  }
+  },
+  "liveServer.settings.port": 5501
 }
