@@ -23,7 +23,11 @@ export class TransactionsService {
     const url = `${this._API_URL}?order=created_at.desc`;
 
     return this.http.get<ITransactions[]>(url, { headers: this._headers }).pipe(
-      finalize(() => this.isLoading$.next(false))
+      finalize(() => {
+        setTimeout(() => {
+          this.isLoading$.next(false)
+        }, 2000);
+      })
     );
   }
 
