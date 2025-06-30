@@ -25,7 +25,7 @@ export class ModalComponent {
   currenModaltMode!: 'edit' | 'add';
   modalAppears = this.mode.modalAppears;
   faXmark = faXmark;
-  type: string = 'Venda'
+  type: string = 'Venda';
   transaction = this.mode.selectedTransaction;
 
   constructor(
@@ -35,20 +35,15 @@ export class ModalComponent {
   ) {
     effect(() => {
       const mode = this.modalMode();
-
       this.currenModaltMode = mode;
-
-      if (mode === 'add' || !this.transaction()) {
-        this.form = this.handleFormBuilder();
-        this.setType('Venda');
-      } else {
-        this.form = this.handleFormBuilder(this.transaction()!);
-        this.setType(this.transaction()!.type);
-      }
+      const transaction = this.transaction();
+      const isEdit = mode === 'edit' && transaction;
+      this.form = this.handleFormBuilder(isEdit ? transaction : undefined);
+      this.setType(isEdit ? transaction!.type : 'Venda');
     });
   }
 
-  private _defaultValidators(value: string | undefined = '') {
+  private _defaultValidators(value: string = '') {
     return [
       value,
       Validators.compose([
@@ -65,7 +60,7 @@ export class ModalComponent {
       description: this._defaultValidators(transaction?.description),
       category: this._defaultValidators(transaction?.category),
       amount: this._defaultValidators(transaction?.amount !== undefined ? String(transaction.amount) : undefined),
-      type: [this.type],
+      type: [transaction?.type ?? this.type],
     };
 
     if (isEditMode && transaction) {
@@ -78,7 +73,7 @@ export class ModalComponent {
 
   setType(value: 'Venda' | 'Gasto') {
     this.type = value;
-    this.form.get('type')?.setValue(value);
+    this.form?.get('type')?.setValue(value);
   }
 
   onSubmit() {
@@ -113,7 +108,7 @@ export class ModalComponent {
         this.closeModal();
       },
       error: (err) => {
-        console.error('Erro ao adicionar transação:', err);
+        console.error('Erro ao atualizar transação:', err);
       }
     });
   }
@@ -135,7 +130,9 @@ export class ModalComponent {
       this.form.reset();
       this.setType('Venda');
     } else {
-      this.setType(this.transaction()!.type);
+      const transaction = this.transaction();
+      if (transaction) this.setType(transaction.type);
     }
   }
 }
+
