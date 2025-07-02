@@ -6,7 +6,6 @@
 
 ### Principais recursos do App
 * Cadastro de transações;
-* Armazenamento de transações no LocalStorage para que a transação fique salva;
 * Edição ou exclusão de uma transação específica;
 * Pesquisar transação por descrição ou categoria.
 
